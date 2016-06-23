@@ -2,7 +2,48 @@
   <head>
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
   </head>
+  <h2>Add a new course</h2>
   <body>
-    The best place to start is the "WelcomeController.py" file in app/controllers.
+  <div class="container">
+    <form action= "/add" method="POST">
+		<label class = "name" type= "text" value="Name"></label>
+		<label class = "description" type= "text" value="Description"></label>
+		<input type="submit" value ="Add">
+		<input type="text" name="courseName" value=""></input>
+		<input type="text" name="description" value=""></input>
+	</from>
+	<div>
+		<h3>Courses</h3>
+		<table> 
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Added date</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for course in courses %}
+		<tr>
+			<td>{{course.title}}</td>
+			<td>{{course.description}}</td>
+			<td>{{course.created_at}}</td>
+			<td><a href= "/course/destroy/{{course.id}}">remove</a></td>
+		</tr>
+		{% endfor %}
+		{% with messages = get_flashed_messages() %}
+	    	{% if messages %}
+	      		{% for message in messages %}
+	       			<p>{{message}}</p>
+	      		{% endfor %}
+	    	{% endif %}
+	  	{% endwith %}
+		</tbody>
+		</table>
+	</div>
+	</div>
   </body>
 </html>
+
+

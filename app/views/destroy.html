@@ -1,0 +1,16 @@
+<html>
+	<head>
+	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+	</head>
+	<p>Are you sure you want to delete the following course? </p>
+	<body>
+	<div class="container">
+		<form action= "/remove" method="POST">
+			{{course.name}} {{course.description}} {{'noBtn'}}
+			<input type="submit" name= "btn" value ="No"><input type ="submit"  name= "btn" value="Yes! I want to delete this"></input>
+			<input type="hidden" name="courseId" value="{{course.id}}"/>
+		</from>
+	</div>
+	
+  </body>
+</html>
